@@ -6,7 +6,7 @@ class City {
   final Country? country;
 
   /// City ID used by Open Weather Map.
-  final int id;
+  final int? id;
 
   /// City geo location, latitude.
   final double? latitude;
@@ -15,25 +15,25 @@ class City {
   final double? longitude;
 
   /// City name.
-  final String name;
+  final String? name;
 
   /// Population obtained from Open Weather Map, may not be exact.
   final int? population;
 
   /// Sunrise time.
-  final DateTime sunrise;
+  final DateTime? sunrise;
 
   /// Sunset time.
-  final DateTime sunset;
+  final DateTime? sunset;
 
   City({
     this.country,
-    required this.id,
+    this.id,
     this.latitude,
     this.longitude,
-    required this.name,
+    this.name,
     this.population,
-    required this.sunrise,
-    required this.sunset,
+    this.sunrise,
+    this.sunset,
   });
 }
