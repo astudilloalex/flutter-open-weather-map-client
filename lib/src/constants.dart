@@ -1,6 +1,12 @@
 /// Contain the api authority is the main domain.
 const String apiAuthority = 'api.openweathermap.org';
 
+/// This is an internal parameter used in api url to obtain the current climate.
+const String apiCurrentWeatherPath = '/weather';
+
+/// This is an internal parameter used in api url to get the 5 day weather data.
+const String apiFiveDayForecastPath = '/forecast';
+
 /// Contain the unencoded path, after main domain.
 const String apiUnencodedPath = '/data/2.5';
 
@@ -256,12 +262,6 @@ const Map<String, String> countries = {
   'ZM': 'Zambia',
   'ZW': 'Zimbabwe',
 };
-
-/// This is an internal parameter used in api url to obtain the current climate.
-const String currentWeather = '/weather';
-
-/// This is an internal parameter used in api url to get the 5 day weather data.
-const String fiveDayForecast = '/forecast';
 
 /// All languages available in Open Weather Map API.
 enum Language {
