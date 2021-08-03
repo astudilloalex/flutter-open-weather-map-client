@@ -1,4 +1,4 @@
-import 'package:open_weather_map_client/src/constants.dart';
+import 'package:open_weather_map_client/src/common/constants.dart';
 
 /// Country information.
 class Country {
@@ -8,7 +8,7 @@ class Country {
   /// Country english name
   final String name;
 
-  Country({
+  const Country({
     required this.code,
     required this.name,
   });

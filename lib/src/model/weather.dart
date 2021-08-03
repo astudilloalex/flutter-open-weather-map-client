@@ -23,22 +23,21 @@ class Weather {
 
   /// Maximum temperature.
   ///
-  /// This is maximal currently observed temperature
+  /// This is maximal currently observed temperature in Kelvin
   /// (within large megalopolises and urban areas).
-  /// Unit Default: Kelvin, Metric: Celsius, Imperial: Fahrenheit.
   final double maxTemperature;
 
   /// Minimum temperature.
   ///
-  /// This is minimal currently observed temperature
+  /// This is minimal currently observed temperature in Kelvin
   /// (within large megalopolises and urban areas).
-  /// Unit Default: Kelvin, Metric: Celsius, Imperial: Fahrenheit.
   final double minTemperature;
 
   /// Probability of precipitation.
   final double? pop;
 
-  /// Atmospheric pressure (on the sea level, if there is no sea_level or grnd_level data), hPa.
+  /// Atmospheric pressure (on the sea level, if there is no [seaLevel] or
+  /// [groundLevel] data), in hPa (Hectopascal).
   final int pressure;
 
   /// Rain volume for the last 1 hour, mm.
@@ -50,11 +49,11 @@ class Weather {
   /// Atmospheric pressure on the sea level, hPa.
   final int? seaLevel;
 
-  /// Temperature. Unit Default: Kelvin, Metric: Celsius, Imperial: Fahrenheit.
+  /// Temperature in Kelvin.
   final double temperature;
 
-  /// Temperature. This temperature parameter accounts for the human perception
-  /// of weather. Unit Default: Kelvin, Metric: Celsius, Imperial: Fahrenheit.
+  /// This temperature parameter accounts for the human perception
+  /// of weather in Kelvin.
   final double? temperatureFeelsLike;
 
   /// Average visibility, metres.
@@ -63,13 +62,13 @@ class Weather {
   /// Wind direction, degrees (meteorological).
   final int? windDirection;
 
-  /// Wind gust. Unit Default: meter/sec, Metric: meter/sec, Imperial: miles/hour
+  /// Wind gust in meter/sec.
   final double? windGust;
 
-  /// Wind speed. Unit Default: meter/sec, Metric: meter/sec, Imperial: miles/hour.
+  /// Wind speed in meter/sec.
   final double windSpeed;
 
-  Weather({
+  const Weather({
     this.clouds,
     required this.condition,
     required this.dateTime,
@@ -91,4 +90,39 @@ class Weather {
     this.windGust,
     required this.windSpeed,
   });
+
+  /// This is maximal currently observed temperature in Celsius degrees.
+  double get maxTemperatureInCelsius => maxTemperature - 273.15;
+
+  /// This is maximal currently observed temperature in Fahrenheit degrees.
+  double get maxTemperatureInFahrenheit => 1.8 * maxTemperature - 459.67;
+
+  /// This is minimal currently observed temperature in Celsius degrees.
+  double get minTemperatureInCelsius => minTemperature - 273.15;
+
+  /// This is minimal currently observed temperature in Fahrenheit degrees.
+  double get minTemperatureInFahrenheit => 1.8 * minTemperature - 459.67;
+
+  /// Returns atmospheric pressure (on the sea level, if there is no [seaLevel] or
+  /// [groundLevel] data), in mmHg (Milímetros de mercurio).
+  int get pressureInMillimetersOfMercury => (pressure * 0.7501).toInt();
+
+  /// Returns atmospheric pressure (on the sea level, if there is no [seaLevel] or
+  /// [groundLevel] data), in atm (Atmosphere).
+  int get pressureInAtmosphere => (pressure * 0.000987).toInt();
+
+  /// Returns the temperature in Celsius degrees.
+  double get temperatureInCelsius => temperature - 273.15;
+
+  /// Returns the temperature in Fahrenheit degrees.
+  double get temperatureInFahrenheit => 1.8 * temperature - 459.67;
+
+  /// Returns the wind speed in kilometers per hour.
+  double get windSpeedInKilometersPerHour => windSpeed * 3.6;
+
+  /// Returns the wind speed in knots.
+  double get windSpeedInKnots => windSpeed * 1.9438;
+
+  /// Returns the wind speed in miles per hour.
+  double get windSpeedInMilesPerHour => windSpeed * 2.237;
 }

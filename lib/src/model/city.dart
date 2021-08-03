@@ -26,7 +26,7 @@ class City {
   /// Sunset time.
   final DateTime? sunset;
 
-  City({
+  const City({
     this.country,
     this.id,
     this.latitude,
