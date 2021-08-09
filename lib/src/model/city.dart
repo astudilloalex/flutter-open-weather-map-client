@@ -26,6 +26,11 @@ class City {
   /// Sunset time.
   final DateTime? sunset;
 
+  /// Timezone in seconds.
+  ///
+  /// For example GTM -05:00 is -18000
+  final int? timezone;
+
   const City({
     this.country,
     this.id,
@@ -35,5 +40,6 @@ class City {
     this.population,
     this.sunrise,
     this.sunset,
+    this.timezone,
   });
 }

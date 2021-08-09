@@ -1,3 +1,6 @@
+## 0.1.3
+* Add timezone to the city `timezone`
+
 ## 0.1.2
 * Now you can get the temperature feels like in Celsius and Fahrenheit degrees.
 

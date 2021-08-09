@@ -23,6 +23,7 @@ City parseCity(String responseBody) {
     sunset: DateTime.fromMillisecondsSinceEpoch(
       parsed['sys']['sunset'] * 1000 as int,
     ),
+    timezone: parsed['timezone'] as int?,
   );
 }
 
