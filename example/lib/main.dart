@@ -21,9 +21,9 @@ class MyApp extends StatelessWidget {
         body: Row(
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const WithoutProvider(),
-            const WithProvider(),
+          children: const [
+            WithoutProvider(),
+            WithProvider(),
           ],
         ),
       ),
@@ -153,8 +153,8 @@ class WithoutProvider extends StatelessWidget {
         padding: const EdgeInsets.all(8.0),
         child: Column(
           mainAxisSize: MainAxisSize.min,
-          children: [
-            const Text(
+          children: const [
+            Text(
               'Working without provider',
               style: TextStyle(
                 color: Colors.teal,
@@ -162,8 +162,8 @@ class WithoutProvider extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            const Divider(),
-            const WeatherWithoutProvider(),
+            Divider(),
+            WeatherWithoutProvider(),
           ],
         ),
       ),

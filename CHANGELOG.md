@@ -1,3 +1,9 @@
+## 0.1.2
+* Now you can get the temperature feels like in Celsius and Fahrenheit degrees.
+
+## 0.1.1
+* Now you can send the language code as a String parameter only in the providerless class.
+
 ## 0.1.0
 * Update readme.
 * Update example with provider.
