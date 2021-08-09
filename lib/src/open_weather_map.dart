@@ -15,6 +15,9 @@ class OpenWeatherMap {
   /// The language to get the data from the API.
   final Language language;
 
+  /// The language code to get description from API.
+  final String? langCode;
+
   /// Controls the maximum time in seconds to wait to get the data.
   /// If you have a slow connection make sure to use the correct seconds.
   ///
@@ -31,6 +34,7 @@ class OpenWeatherMap {
   OpenWeatherMap({
     required this.apiKey,
     this.language = Language.english,
+    this.langCode,
     this.requestTimeout = 5,
   });
 
@@ -52,7 +56,7 @@ class OpenWeatherMap {
       if (city != null && cityId == null) 'q': city,
       if (city == null && cityId == null) 'lat': latitude.toString(),
       if (city == null && cityId == null) 'lon': longitude.toString(),
-      'lang': languageCode(language),
+      'lang': langCode ?? languageCode(language),
     };
   }
 

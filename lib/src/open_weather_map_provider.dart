@@ -135,6 +135,7 @@ class OpenWeatherMapProvider with ChangeNotifier {
     if (loadForecast) _forecast = await _fiveDayForecast;
   }
 
+  /// Update data and notify listeners
   Future<void> update() async {
     _weather = await _currentWeather;
     if (loadForecast) _forecast = await _fiveDayForecast;

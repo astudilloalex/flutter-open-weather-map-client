@@ -111,6 +111,13 @@ class Weather {
   /// [groundLevel] data), in atm (Atmosphere).
   int get pressureInAtmosphere => (pressure * 0.000987).toInt();
 
+  /// Return the temperature feels like in Celsius degrees.
+  double? get temperatureFeelsLikeInCelsius => temperatureFeelsLike! - 273.15;
+
+  /// Returns the temperature feels like in Fahrenheit degrees.
+  double? get temperatureFeelsLikeInFahrenheit =>
+      1.8 * temperatureFeelsLike! - 459.67;
+
   /// Returns the temperature in Celsius degrees.
   double get temperatureInCelsius => temperature - 273.15;
 
