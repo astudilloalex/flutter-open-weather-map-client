@@ -1,3 +1,6 @@
+## 0.1.4
+* Now you can send the language code as a String parameter in class with provider
+
 ## 0.1.3
 * Add timezone to the city `timezone`
 

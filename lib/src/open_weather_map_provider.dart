@@ -14,6 +14,9 @@ class OpenWeatherMapProvider with ChangeNotifier {
   /// The key obtained from the Open Weather Map API.
   final String apiKey;
 
+  /// The language code to get description from API.
+  final String? langCode;
+
   /// Use the supported [Language] to get the data from the API.
   final Language language;
 
@@ -48,6 +51,7 @@ class OpenWeatherMapProvider with ChangeNotifier {
     required String name,
     String? countryCode,
     required this.apiKey,
+    this.langCode,
     this.language = Language.english,
     this.loadForecast = true,
     this.requestTimeout = 5,
@@ -65,6 +69,7 @@ class OpenWeatherMapProvider with ChangeNotifier {
     required double latitude,
     required double longitude,
     required this.apiKey,
+    this.langCode,
     this.language = Language.english,
     this.loadForecast = true,
     this.requestTimeout = 5,
@@ -125,7 +130,7 @@ class OpenWeatherMapProvider with ChangeNotifier {
       if (city != null && _city.id == null && !_loadByCoordinates) 'q': city,
       if (_loadByCoordinates) 'lat': _city.latitude.toString(),
       if (_loadByCoordinates) 'lon': _city.longitude.toString(),
-      'lang': languageCode(language),
+      'lang': langCode ?? languageCode(language),
     };
   }
 
