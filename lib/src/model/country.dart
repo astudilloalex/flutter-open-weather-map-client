@@ -8,13 +8,17 @@ class Country {
   /// Country english name
   final String name;
 
+  /// Define a Country class with code and name.
   const Country({
     required this.code,
     required this.name,
   });
 
-  /// Constructor that initializes the Country class by its ISO 3166-1 [code].
-  Country.fromCode(String code)
-      : code = code.toUpperCase(),
-        name = countries[code.toUpperCase()]!;
+  /// Factory that initializes the Country class by its ISO 3166-1 [code].
+  factory Country.fromCode(String code) {
+    return Country(
+      code: code.toUpperCase(),
+      name: kCountries[code.toUpperCase()] ?? 'NOT FOUND',
+    );
+  }
 }
