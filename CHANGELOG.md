@@ -1,3 +1,8 @@
+## 1.0.0
+* Initial stable version
+* Update minimum Flutter SDK to 2.5
+* This version only support current weather data for one location.
+
 ## 0.1.4
 * Now you can send the language code as a String parameter in class with provider
 

@@ -1,0 +1,73 @@
+import 'package:open_weather_map_client/open_weather_map_client.dart';
+import 'package:open_weather_map_client/src/model/condition.dart';
+import 'package:open_weather_map_client/src/model/detail.dart';
+import 'package:open_weather_map_client/src/model/rain.dart';
+import 'package:open_weather_map_client/src/model/wind.dart';
+
+/// Current weather information.
+class CurrentWeather {
+  /// Define a [CurrentWeather] class.
+  const CurrentWeather({
+    required this.city,
+    this.cloudiness,
+    required this.conditions,
+    required this.dateTime,
+    required this.detail,
+    this.rain,
+    this.visibility,
+    required this.wind,
+  });
+
+  /// City information.
+  final City city;
+
+  /// Cloudiness, in % (percentage).
+  final int? cloudiness;
+
+  /// Weather conditions information (Rain, Snow, etc).
+  ///
+  /// Most of the time the list only has one item.
+  final List<Condition> conditions;
+
+  /// Time of data calculation.
+  final DateTime dateTime;
+
+  /// Details of the weather (temperature, pressure, etc).
+  final Detail detail;
+
+  /// Rain information.
+  final Rain? rain;
+
+  /// Average visibility, metres.
+  final int? visibility;
+
+  /// Wind information.
+  final Wind wind;
+
+  /// Factory that returns the
+  factory CurrentWeather.fromJson(Map<String, dynamic> json) {
+    final Map<String, dynamic> city = {
+      'coord': json['coord'],
+      'country': json['sys']['country'],
+      'id': json['id'],
+      'name': json['name'],
+      'timezone': json['timezone'],
+    };
+    return CurrentWeather(
+      city: City.fromJson(city),
+      cloudiness: json['clouds']['all'] as int?,
+      conditions: (json['weather'] as List<dynamic>).map<Condition>(
+        (condition) {
+          return Condition.fromJson(condition as Map<String, dynamic>);
+        },
+      ).toList(),
+      dateTime: DateTime.fromMillisecondsSinceEpoch(json['dt'] * 1000 as int),
+      detail: Detail.fromJson(json['main'] as Map<String, dynamic>),
+      rain: json['rain'] != null
+          ? Rain.fromJson(json['rain'] as Map<String, dynamic>)
+          : null,
+      visibility: json['visibility'] as int?,
+      wind: Wind.fromJson(json['wind'] as Map<String, dynamic>),
+    );
+  }
+}

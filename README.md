@@ -5,62 +5,38 @@ Package that communicates with Open Weather Map to obtain climate data in a mode
 ## Getting Started
 [![pub package](https://pub.dev/static/img/pub-dev-logo-2x.png?hash=umitaheu8hl7gd3mineshk2koqfngugi)](https://pub.dev/packages/open_weather_map_client)
 
-This package works best with [Provider](https://pub.dev/packages/provider).
-
-### **Get the current weather with Provider**
-Use ChangeNotifierProvider to update data from API.
+### **Get the current weather**
+See the full example at: https://github.com/astudilloalex/flutter-open-weather-map-client/tree/main/example
 ```dart
-ChangeNotifierProvider(
-    create: (_) => OpenWeatherMapProvider.byCity(
-        name: 'London',
-        apiKey: '<Use your API key>',
-    ),
-    builder: (context, _) {
-        return FutureBuilder(
-            future: context.read<OpenWeatherMapProvider>().load(),
-            builder: (_, snapshot) {
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                    return const Center(
-                        child: CircularProgressIndicator.adaptative(),
-                    );
-                }
-                return Column(
-                    children: [
-                        Text('Temperature: ${context.watch<OpenWeatherMapProvider>().weather.temperature} K'),
-                        Text('Wind speed: ${context.watch<OpenWeatherMapProvider>().weather.windSpeed} m/s'),
-                        ElevatedButton(
-                            onPressed: () async {
-                                await context.read<OpenWeatherMapProvider>().update();
-                            }
-                            child: const Text('Update'),
-                        ),
-                    ],
-                );
-            }
-        );
-    }
-)
-```
-
-### **Get the current weather without Provider**
-Here we do not update the data we simply obtain from the API, to update data without Provider, check the example we have to handle StatefulWidget.
-```dart
-FutureBuilder<Weather>(
-    future: OpenWeatherMap(apiKey: '<Use your API key>').currentWeatherByCity(name: 'London'),
+FutureBuilder<CurrentWeather>(
+    future: openWeatherMap.currentWeather(const City(name: 'London')),
     builder: (_, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(child: CircularProgressIndicator.adaptive());
+        }
+        if (snapshot.hasError) {
+            return ApiErrorCard(apiError: snapshot.error! as ApiError);
+        }
+        if (!snapshot.hasData) {
             return const Center(
-                child: CircularProgressIndicator.adaptative(),
+                child: Text(
+                'Error obtained data, check internet connection',
+                ),
             );
         }
-        return Column(
-            children: [
-                Text('Temperature: ${snapshot.data?.temperature} K'),
-                Text('Wind speed: ${snapshot.data?.windSpeed} m/s'),
-            ],
+        final CurrentWeather weather = snapshot.data!;
+        return Center(
+        child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                    Text('City: ${weather.city.name}'),
+                    Text('Temperature: ${weather.detail.temperatureCelsius.toStringAsFixed(2)} °C'),
+                    Text('Speed: ${weather.wind.speed.toStringAsFixed(2)} m/s'),
+                ],
+            ),
         );
     },
-)
+),
 ```
 
-![Flutter Open Weather Map Client Example](https://i.postimg.cc/FR2jQJds/Screenshot-2021-08-02-180857.jpg)
+![Flutter Open Weather Map Client Example](https://i.postimg.cc/xjZDdtdK/Screenshot-1634779262.png)

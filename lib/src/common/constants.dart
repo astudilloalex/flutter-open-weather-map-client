@@ -1,17 +1,17 @@
-/// Contain the api authority is the main domain.
-const String apiAuthority = 'api.openweathermap.org';
-
 /// This is an internal parameter used in api url to obtain the current climate.
-const String apiCurrentWeatherPath = '/weather';
+const String kApiCurrentWeatherPath = '/weather';
 
 /// This is an internal parameter used in api url to get the 5 day weather data.
-const String apiFiveDayForecastPath = '/forecast';
+const String kApiFiveDayForecastPath = '/forecast';
 
 /// Contain the unencoded path, after main domain.
-const String apiUnencodedPath = '/data/2.5';
+const String kApiUnencodedPath = '/data/2.5';
+
+/// Contain the api authority is the main domain of Free plans.
+const String kFreeApiAuthority = 'api.openweathermap.org';
 
 /// Map with all countries in English use ISO 3166-1 key to get country name.
-const Map<String, String> countries = {
+const Map<String, String> kCountries = {
   'AF': 'Afghanistan',
   'AX': 'Åland Islands',
   'AL': 'Albania',

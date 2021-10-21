@@ -1,24 +1,24 @@
 name: example
-description: Example of using the library.
+description: Example of using the open_weather_map_client package.
 
 publish_to: 'none'
 
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.13.0 <3.0.0"
+  sdk: ">=2.14.0 <3.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
   open_weather_map_client:
     path: ../
-  provider: ^5.0.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  lint: ^1.5.3
+  # https://pub.dev/packages/lint
+  lint: ^1.7.2
 
 flutter:
   uses-material-design: true
