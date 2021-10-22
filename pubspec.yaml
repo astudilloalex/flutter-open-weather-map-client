@@ -1,6 +1,6 @@
 name: open_weather_map_client
 description: Package that communicates with Open Weather Map to obtain climate data in a model.
-version: 1.0.0
+version: 1.0.1
 repository: https://github.com/astudilloalex/flutter-open-weather-map-client
 
 environment:

@@ -14,6 +14,8 @@ class CurrentWeather {
     required this.dateTime,
     required this.detail,
     this.rain,
+    required this.sunrise,
+    required this.sunset,
     this.visibility,
     required this.wind,
   });
@@ -37,6 +39,12 @@ class CurrentWeather {
 
   /// Rain information.
   final Rain? rain;
+
+  /// Sunrise time.
+  final DateTime sunrise;
+
+  /// Sunset time.
+  final DateTime sunset;
 
   /// Average visibility, metres.
   final int? visibility;
@@ -66,6 +74,12 @@ class CurrentWeather {
       rain: json['rain'] != null
           ? Rain.fromJson(json['rain'] as Map<String, dynamic>)
           : null,
+      sunrise: DateTime.fromMillisecondsSinceEpoch(
+        json['sys']['sunrise'] * 1000 as int,
+      ),
+      sunset: DateTime.fromMillisecondsSinceEpoch(
+        json['sys']['sunset'] * 1000 as int,
+      ),
       visibility: json['visibility'] as int?,
       wind: Wind.fromJson(json['wind'] as Map<String, dynamic>),
     );

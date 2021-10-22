@@ -23,8 +23,10 @@ class CurrentWeatherTest {
       expect(weather.city.country, isA<Country>());
       expect(weather.city.country, isNotNull);
       expect(weather.city.country!.code, 'GB');
+      print(weather.sunrise);
+      print(weather.sunset);
       expect(
-        1000 < weather.detail.pressure! && weather.detail.pressure! < 1030,
+        900 < weather.detail.pressure! && weather.detail.pressure! < 1100,
         isTrue,
       );
       expect(weather.city.timezone, 3600);
@@ -38,9 +40,11 @@ class CurrentWeatherTest {
       expect(weather.city.country, isNotNull);
       expect(weather.city.coordinates?.latitude, -2.8833);
       expect(weather.city.coordinates?.longitude, -78.9833);
+      print(weather.sunrise);
+      print(weather.sunset);
       expect(weather.city.country!.code, 'EC');
       expect(
-        1000 < weather.detail.pressure! && weather.detail.pressure! < 1030,
+        900 < weather.detail.pressure! && weather.detail.pressure! < 1100,
         isTrue,
       );
       expect(weather.city.timezone, -18000);
@@ -57,7 +61,7 @@ class CurrentWeatherTest {
       expect(weather.city.country, isNotNull);
       expect(weather.city.country!.code, 'GB');
       expect(
-        1000 < weather.detail.pressure! && weather.detail.pressure! < 1030,
+        900 < weather.detail.pressure! && weather.detail.pressure! < 1100,
         isTrue,
       );
       expect(weather.city.timezone, 3600);
@@ -72,7 +76,7 @@ class CurrentWeatherTest {
       expect(weather.city.country, isNotNull);
       expect(weather.city.country!.code, 'EC');
       expect(
-        1000 < weather.detail.pressure! && weather.detail.pressure! < 1030,
+        900 < weather.detail.pressure! && weather.detail.pressure! < 1100,
         isTrue,
       );
       expect(weather.city.timezone, -18000);
@@ -89,7 +93,7 @@ class CurrentWeatherTest {
       expect(weather.city.country, isNotNull);
       expect(weather.city.country!.code, 'GB');
       expect(
-        1000 < weather.detail.pressure! && weather.detail.pressure! < 1030,
+        900 < weather.detail.pressure! && weather.detail.pressure! < 1100,
         isTrue,
       );
       expect(weather.city.timezone, 3600);
@@ -103,7 +107,7 @@ class CurrentWeatherTest {
       expect(weather.city.country, isNotNull);
       expect(weather.city.country!.code, 'EC');
       expect(
-        1000 < weather.detail.pressure! && weather.detail.pressure! < 1030,
+        900 < weather.detail.pressure! && weather.detail.pressure! < 1100,
         isTrue,
       );
       expect(weather.city.timezone, -18000);

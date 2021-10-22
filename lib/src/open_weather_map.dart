@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
+import 'package:open_weather_map_client/open_weather_map_client.dart';
 import 'package:open_weather_map_client/src/common/constants.dart';
 import 'package:open_weather_map_client/src/common/parse_data.dart';
 import 'package:open_weather_map_client/src/model/city.dart';
@@ -57,7 +58,8 @@ class OpenWeatherMap {
 
   /// Returns a Future of [CurrentWeather] class by [city] information.
   ///
-  ///
+  /// Returns a Future error with [ApiError] class when status code of response
+  /// is different that 200.
   Future<CurrentWeather> currentWeather(City city) async {
     final http.Response response = await http
         .get(

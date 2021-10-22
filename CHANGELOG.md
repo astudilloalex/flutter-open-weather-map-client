@@ -1,3 +1,6 @@
+## 1.0.1
+* Add sunrise and sunset time to current weather.
+
 ## 1.0.0
 * Initial stable version
 * Update minimum Flutter SDK to 2.5
