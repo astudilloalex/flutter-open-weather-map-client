@@ -16,4 +16,9 @@ class ApiError {
       message: json['message'] as String,
     );
   }
+
+  /// Returns a map of the class.
+  Map<String, dynamic> toJson() {
+    return {'cod': code, 'message': message};
+  }
 }

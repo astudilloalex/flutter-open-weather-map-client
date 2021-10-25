@@ -16,4 +16,9 @@ class Coordinates {
       double.parse(json['lon'].toString()),
     );
   }
+
+  /// Returns a map of the class.
+  Map<String, dynamic> toJson() {
+    return {'lat': latitude, 'lon': longitude};
+  }
 }

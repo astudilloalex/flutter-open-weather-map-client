@@ -19,10 +19,15 @@ class Wind {
   /// Factory that returns a [Wind] class from [json] Map.
   factory Wind.fromJson(Map<String, dynamic> json) {
     return Wind(
-      speed: double.tryParse(json['speed'].toString()) ?? 0.0,
       direction: int.tryParse(json['deg'].toString()),
       gust: double.tryParse(json['gust'].toString()),
+      speed: double.tryParse(json['speed'].toString()) ?? 0.0,
     );
+  }
+
+  /// Returns a map of the class.
+  Map<String, dynamic> toJson() {
+    return {'deg': direction, 'gust': gust, 'speed': speed};
   }
 
   /// Returns the wind [gust] in kilometers per hour, if not null.

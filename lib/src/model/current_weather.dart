@@ -84,4 +84,26 @@ class CurrentWeather {
       wind: Wind.fromJson(json['wind'] as Map<String, dynamic>),
     );
   }
+
+  /// Returns a map of the class formatted as it comes from the API.
+  Map<String, dynamic> toJson() {
+    return {
+      'clouds': {'all': cloudiness},
+      'coord': city.coordinates?.toJson(),
+      'dt': dateTime.millisecondsSinceEpoch ~/ 1000,
+      'id': city.id,
+      'main': detail.toJson(),
+      'name': city.name,
+      'rain': rain?.toJson(),
+      'sys': {
+        'country': city.country?.code,
+        'sunrise': sunrise.millisecondsSinceEpoch ~/ 1000,
+        'sunset': sunset.millisecondsSinceEpoch ~/ 1000,
+      },
+      'timezone': city.timezone,
+      'visibility': visibility,
+      'weather': List<dynamic>.from(conditions.map((cond) => cond.toJson())),
+      'wind': wind.toJson(),
+    };
+  }
 }

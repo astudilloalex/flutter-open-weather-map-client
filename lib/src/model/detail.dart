@@ -54,6 +54,20 @@ class Detail {
     );
   }
 
+  /// Returns a map of the class.
+  Map<String, dynamic> toJson() {
+    return {
+      'grnd_level': groundLevel,
+      'humidity': humidity,
+      'temp_max': maxTemperature,
+      'temp_min': minTemperature,
+      'pressure': pressure,
+      'sea_level': seaLevel,
+      'temp': temperature,
+      'feels_like': temperatureFeelsLike,
+    };
+  }
+
   /// Convert Kelvin degrees to Celsius degrees.
   double _celsius(double temperature) => temperature - 273.15;
 

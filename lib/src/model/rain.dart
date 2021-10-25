@@ -16,4 +16,9 @@ class Rain {
       lastThreeHours: double.tryParse(json['3h'].toString()),
     );
   }
+
+  /// Returns a map of the class.
+  Map<String, dynamic> toJson() {
+    return {'1h': lastHour, '3h': lastThreeHours};
+  }
 }
